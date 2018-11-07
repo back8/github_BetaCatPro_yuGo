@@ -1,0 +1,293 @@
+* {
+
+	/* box-sizing: border-box; */
+}
+
+body {
+	overflow: auto;
+}
+
+/* header开始 */
+header {
+	position: relative;
+	padding-left: 58px;
+	padding-top: 34px;
+	width: 1260px;
+	height: 100px;
+	margin: 0 auto;	/* border: 1px solid red; */
+}
+
+header .logo {
+	position: absolute;
+	display: inline-block;
+	width: 258px;
+	height: 59px;
+}
+
+.menu {
+	position: absolute;
+	left: 323px;
+	display: inline-block;
+	height: 59px;
+	margin-left: 15px;
+}
+
+.menu li {
+	float: left;
+	position: relative;
+	text-align: center;
+	width: 80px;
+	height: 59px;
+	border-radius: 25px;
+	overflow: hidden;
+	margin-right: 28px;
+	line-height: 59px;
+	font-size: 14px;
+}
+
+.menu li a {
+	margin-top: 59px;
+	color: #666666;
+	font-weight: bold;
+}
+
+.menu li div {
+	width: 0%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: #aeeeee;
+	z-index: -1;
+}
+
+.topRight {
+	position: relative;
+	float: right;
+	margin-right: 80px;
+	margin-top: 18px;
+	/* margin-right: -60px; */
+}
+
+.topRight input[type = "text"] {
+	position: absolute;
+	width: 0px;
+	height: 20px;
+	left: -220px;
+	/* z-index: -1; */
+	display: none;
+}
+
+.topRight  li {
+	float: left;
+	width: 22px;
+	height: 22px;
+	margin-right: 23px;
+	cursor: pointer;
+}
+
+.topRight  li:nth-child(1) {
+	background: url(../images/icons/search.png);
+	background-size: 100% 100%;
+}
+
+.topRight  li:nth-child(2) {
+	background: url(../images/icons/cart.png);
+	background-size: 100% 100%;
+	margin-right: 0;
+}
+
+.topRight a {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+}
+
+/* header结束 */
+
+/* container开始 */
+.container {
+	width: 100%;
+	position: relative;
+}
+
+.banner {
+	width: 100%;
+	height: 230px;
+	overflow: hidden;
+}
+
+.banner img {
+	width: 100%;
+	height: auto;
+	z-index: -1;
+}
+
+.banner div {
+	position: absolute;
+	width: 122px;
+	height: 48px;
+	left: 50%;
+	top: 60px;
+	margin-left: -61px;
+	border-bottom: 1px solid #fff;
+	text-align: center;
+	color: #fff;
+	font-size: 25px;
+	line-height: 48px;
+	z-index: 2;
+}
+
+.wrapBanner {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 230px;
+	background-color: rgba(0, 0, 0, .6);
+}
+
+.wrappper {
+	width: 1100px;
+	margin: 70px auto;
+}
+
+.wrappper .title {
+	width: 100%;
+	height: 70px;
+	background-color: #d3ffea;
+}
+
+.wrappper .title li {
+	float: left;
+	text-indent: 30px;
+	text-align: left;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 70px;
+}
+
+.wrappper .title li:nth-child(1) {
+	width: 366px;
+}
+
+.wrappper .title li:nth-child(2) {
+	width: 183px;
+}
+
+.wrappper .title li:nth-child(3) {
+	width: 540px;
+}
+
+.wrappper .goodslist {
+	width: 1100;
+	height: 190px;
+	overflow: hidden;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+.wrappper .goodslist span {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.wrappper .goodslist li {
+	float: left;
+	text-indent: 30px;
+	font-size: 17px;
+	color: #666;
+	line-height: 190px;
+}
+
+.wrappper .goodslist li:nth-child(1) {
+	width: 366px;
+}
+
+.wrappper .goodslist li:nth-child(2) {
+	width: 183px
+}
+
+.wrappper .goodslist li:nth-child(3) {
+	color: #94ae76;
+	width: 540px;
+}
+
+.wrappper .goodslist li img {
+	display: inline-block;
+	width: 120px;
+	height: 120px;
+	margin-top: 30px;
+}
+
+.addToCart {
+	border: none;
+	margin-left:100px;
+	width: 125px;
+	height: 48px;
+	color: #fff;
+	border-radius: 4px;
+	background-color:#94ae76;
+	cursor: pointer;
+	-webkit-transition: all .6s;
+	-o-transition: all .6s;
+	transition: all .6s;
+}
+
+.addToCart:hover {
+	background-color:#89ae56;
+}
+
+.remove {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background: url(../images/icons/叉.png);
+	margin-left: 100px;
+	margin-top: 83px;
+	background-size: 100% 100%;
+	cursor: pointer;
+	-webkit-transition: all .6s;
+	-o-transition: all .6s;
+	transition: all .6s;
+}
+
+.remove:hover {
+	-webkit-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+
+/* container结束 */
+
+/* footer开始 */
+.footer {
+	height: 160px;
+	position: relative;
+	border-top: 2px solid #42ad46;
+}
+
+.foot_link {
+	text-align: center;
+	margin-top: 30px;
+}
+
+.foot_link a, .foot_link span {
+	color: #4e4e4e;
+}
+
+.foot_link a:hover {
+	color: #ff8800
+}
+
+.foot_link span {
+	padding: 0 10px
+}
+
+.footer p {
+	text-align: center;
+	margin-top: 10px;
+}
+
+/* footer结束 */

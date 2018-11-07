@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="public/reset.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+<body>
+	<header>
+		<a href="index.html" class="logo"><img src="images/logo.png" alt="首页"></a>
+		<ul class="menu" id="menu">
+			<li><a href="index.html">首页</a><div></div></li>
+			<li><a href="good-list.html">商品列表</a><div></div></li>
+			<li><a href="goods-detail.html">商品详情</a><div></div></li>
+			<li><a href="my-heart.html">收藏</a><div></div></li>
+			<li><a href="cart.html">购物车</a><div></div></li>
+			<li><a href="user_info.html">个人中心</a><div></div></li>
+			<li><a href="login.html" target="_black">登录&注册</a><div></div></li>
+		</ul>
+		<ul class="topRight">
+			<li class="search"></li>
+			<li><a href="cart.html"></a></li>
+			<input type="text" placeholder="请输入商品名称" autofocus>
+		</ul>
+	</header>
+
+	<div class="container" id="container">
+		<div class="banner">
+			<div>个人中心</div>
+			<img src="images/sub-header/014.jpg" alt="">
+		</div>
+		<div class="wrapBanner"></div>
+
+		<section class="perContent">
+		  	<!-- 个人信息 -->
+			<div class="main_con clearfix">
+				<div class="left_menu_con clearfix">
+					<h3>用户中心</h3>
+					<ul>
+						<li><a href="user_info.html">· 个人信息</a></li>
+						<li><a href="user_order.html">· 全部订单</a></li>
+						<li><a href="usersite.html" class="active">· 收货地址</a></li>
+					</ul>
+				</div>
+				<div class="right_content clearfix">
+					<h3 class="common_title2">收货地址</h3>
+					<div class="site_con">
+						<dl>
+							<dt>当前地址：</dt>
+							<dd>成都市 金牛区  188****8888</dd>
+						</dl>					
+					</div>
+					<h3 class="common_title2">编辑地址</h3>
+					<div class="site_con">
+						<form>
+							<div class="form_group">
+								<label>收件人：</label>
+								<input type="text" name="">
+							</div>
+							<div class="form_group form_group2">
+								<label>详细地址：</label>
+								<textarea class="site_area"></textarea>
+							</div>
+							<div class="form_group">
+								<label>邮编：</label>
+								<input type="text" name="">
+							</div>
+							<div class="form_group">
+								<label>手机：</label>
+								<input type="text" name="">
+							</div>
+
+							<input type="submit" name="" value="提交" class="info_submit">
+						</form>
+					</div>
+				</div>
+			</div>
+			<!-- 个人信息结束 -->
+		</section>
+	</div>
+
+	<footer class="footer">
+		<div class="foot_link">
+			<a href="#">关于我们</a>
+			<span>|</span>
+			<a href="#">联系我们</a>
+			<span>|</span>
+			<a href="#">网站合作</a>
+			<span>|</span>
+			<a href="#">友情链接</a>		
+		</div>
+		<p>Copyright 2018 , All Rights Reserved 看见我的小猫咪了吗 版权所有</p>
+		<p>地址：四川省宜宾市. 违法和不良信息举报电话：12377 举报邮箱：jubao@12377.cn</p>
+	</footer>
+
+<script src="js/MyFunc.js"></script>
+<script src="js/goodlist.js"></script>
+</body>
+</html>
+

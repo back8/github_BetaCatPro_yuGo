@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>愉购</title>
+	<link rel="stylesheet" href="public/reset.css">
+	<link rel="stylesheet" href="css/placeOrder.css">
+</head>
+<body>
+	<!-- 头部 -->
+	<header>
+		<a href="index.html" class="logo"><img src="images/logo.png" alt="首页"></a>
+		<ul class="menu" id="menu">
+			<li><a href="index.html">首页</a><div></div></li>
+			<li><a href="good-list.html">商品列表</a><div></div></li>
+			<li><a href="goods-detail.html">商品详情</a><div></div></li>
+			<li><a href="my-heart.html">收藏</a><div></div></li>
+			<li><a href="cart.html">购物车</a><div></div></li>
+			<li><a href="user_info.html">个人中心</a><div></div></li>
+			<li><a href="login.html" target="_black">登录&注册</a><div></div></li>
+		</ul>
+		<ul class="topRight">
+			<li class="search"></li>
+			<li><a href="cart.html"></a></li>
+			<input type="text" placeholder="请输入商品名称" autofocus>
+		</ul>
+	</header>
+	<!-- 头部结束 -->
+	
+	<!-- main -->
+	<div class="container" id="container">
+		<div class="banner">
+			<div>订单中心</div>
+			<img src="images/sub-header/015.jpg" alt="">
+		</div>
+		<div class="wrapBanner"></div>
+		
+			<h3 class="common_title">确认收货地址</h3>
+
+	<div class="common_list_con clearfix">
+		<dl>
+			<dt>寄送到：</dt>
+			<dd><input type="radio" name="" checked="">成都市 高新区 软件园 （** 收） 182****7528</dd>
+		</dl>
+		<a href="user_center_site.html" class="edit_site">编辑收货地址</a>
+
+	</div>
+	
+	<h3 class="common_title">支付方式</h3>	
+	<div class="common_list_con clearfix">
+		<div class="pay_style_con clearfix">
+			<input type="radio" name="pay_style" checked>
+			<label class="cash">货到付款</label>
+			<input type="radio" name="pay_style">
+			<label class="weixin">微信支付</label>
+			<input type="radio" name="pay_style">
+			<label class="zhifubao"></label>
+			<input type="radio" name="pay_style">
+			<label class="bank">银行卡支付</label>
+		</div>
+	</div>
+
+	<h3 class="common_title">商品列表</h3>
+	
+	<div class="common_list_con clearfix">
+		<ul class="goods_list_th clearfix">
+			<li class="col01">商品名称</li>
+			<li class="col02">商品单位</li>
+			<li class="col03">商品价格</li>
+			<li class="col04">数量</li>
+			<li class="col05">小计</li>		
+		</ul>
+		<ul class="goods_list_td clearfix">
+			<li class="col01">1</li>			
+			<li class="col02"><img src="images/product/011.jpg"></li>
+			<li class="col03">奇异果</li>
+			<li class="col04">500g</li>
+			<li class="col05">25.80元</li>
+			<li class="col06">1</li>
+			<li class="col07">25.80元</li>	
+		</ul>
+		<ul class="goods_list_td clearfix">
+			<li class="col01">2</li>			
+			<li class="col02"><img src="images/product/010.jpg"></li>
+			<li class="col03">大兴大棚草莓</li>
+			<li class="col04">500g</li>
+			<li class="col05">16.80元</li>
+			<li class="col06">1</li>
+			<li class="col07">16.80元</li>	
+		</ul>
+	</div>
+
+	<h3 class="common_title">总金额结算</h3>
+
+	<div class="common_list_con clearfix">
+		<div class="settle_con">
+			<div class="total_goods_count">共<em>2</em>件商品，总金额<b>42.60元</b></div>
+			<div class="transit">运费：<b>10元</b></div>
+			<div class="total_pay">实付款：<b>52.60元</b></div>
+		</div>
+	</div>
+
+	<div class="order_submit clearfix">
+		<a href="javascript:;" id="order_btn">提交订单</a>
+	</div>	
+
+	</div>
+
+	<!-- main结束 -->
+	
+	<!-- 底部 -->
+	<footer class="footer">
+		<div class="foot_link">
+			<a href="#">关于我们</a>
+			<span>|</span>
+			<a href="#">联系我们</a>
+			<span>|</span>
+			<a href="#">网站合作</a>
+			<span>|</span>
+			<a href="#">友情链接</a>		
+		</div>
+		<p>Copyright 2018 , All Rights Reserved 看见我的小猫咪了吗 版权所有</p>
+		<p>地址：四川省宜宾市. 违法和不良信息举报电话：12377 举报邮箱：jubao@12377.cn</p>
+	</footer>
+	<!-- 底部结束 -->
+<script src="js/MyFunc.js"></script>
+<script src="js/cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+/* reset start */
+html, body {
+    overflow: hidden;
+    height: 100%;
+}
+
+body, h1, h2, h3, h4, p, ul, ol {
+    font: 14px '微软雅黑';
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    border: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:active {
+    color: #009ee0;
+}
+
+/* reset end */
+
+/* common start */
+.clear {
+    zoom: 1;
+}
+
+.clear:after {
+    display: block;
+    clear: both;
+    content: '';
+}
+
+.commonTitle {
+    font-size: 80px;
+    font-weight: bold;
+    line-height: .8;
+    letter-spacing: -5px;
+    color: #009ee0;
+}
+
+.commonText {
+    font-size: 15px;
+    line-height: 1.5;
+    color: white;
+}
+
+/* common end */
+
+
+/* 去掉加链接时产生的框线 */
+img{border:0;}
+
+/* 清除浮动 */
+.clearfix:before,.clearfix:after{content:"";display:table}
+.clearfix:after{clear:both;}
+.clearfix{zoom:1}
+
+/* 浮动 */
+.fl{float:left}
+.fr{float:right}

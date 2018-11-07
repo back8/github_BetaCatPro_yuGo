@@ -1,0 +1,69 @@
+{# 导航 底部 banner 父模板 #}
+
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="icon" type="image/x-icon" href="{% static 'images/bitbug_favicon.ico' %}" />
+	{# 网页标题内容块 #}
+	<title>{% block title %}{% endblock title %}</title>
+	<link rel="stylesheet" href="{% static 'public/reset.css' %}">
+	{# 网页顶部引入文件块 #}
+	{% block topfiles %}{% endblock topfiles %}
+</head>
+<body>
+	{% block cheme %}{% endblock cheme %}
+	<!-- 头部 -->
+	<header>
+		<a href="{% url 'goods:index' %}" class="logo"><img src="{% static 'images/logo.png' %}" alt="首页"></a>
+		<ul class="menu" id="menu">
+			<li><a href="{% url 'goods:index' %}">首页</a><div></div></li>
+			<li><a href="{% url 'goods:list' 999 1 %}">商品列表</a><div></div></li>
+			<!-- <li><a href="#">商品详情</a><div></div></li> -->
+			<li><a href="#">收藏</a><div></div></li>
+			<li><a href="{% url 'cart:show' %}">购物车</a><div></div></li>
+			<li><a href="{% url 'user:user' %}">个人中心</a><div></div></li>
+			{% if user.is_authenticated %}
+				<li><a href="{% url 'user:user' %}" target="_black">Welcome {{ user.username }}</a><div></div></li>
+				<li><a href="{% url 'user:logout' %}" target="_black">注销</a><div></div></li>
+			{% else %}
+				<li><a href="{% url 'user:login' %}" target="_black">登录&注册</a><div></div></li>
+			{% endif %}
+		</ul>
+		<ul class="topRight">
+			<li class="search"></li>
+			<li><a href="{% url 'cart:show' %}"></a></li>
+			<input type="text" placeholder="请输入商品名称" autofocus>
+		</ul>
+	</header>
+	<!-- 头部结束 -->
+	
+	<!-- main -->
+		{# 网站主体内容块 #}
+		{% block body %}{% endblock body %}
+
+	<!-- main结束 -->
+	
+	<!-- 底部 -->
+	<footer class="footer">
+		<div class="foot_link">
+			<a href="#">关于我们</a>
+			<span>|</span>
+			<a href="#">联系我们</a>
+			<span>|</span>
+			<a href="#">网站合作</a>
+			<span>|</span>
+			<a href="#">友情链接</a>		
+		</div>
+		<p>Copyright 2018 , All Rights Reserved 看见我的小猫咪了吗 版权所有</p>
+		<p>地址：四川省宜宾市. 违法和不良信息举报电话：12377 举报邮箱：jubao@12377.cn</p>
+	</footer>
+	<!-- 底部结束 -->
+
+
+<script src="{% static 'js/MyFunc.js' %}"></script>
+{# 网页底部引入文件块 #}
+{% block bottomfiles %}{% endblock bottomfiles %}
+</body>
+</html>

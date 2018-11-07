@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>愉购</title>
+	<link rel="stylesheet" href="public/reset.css">
+	<link rel="stylesheet" href="css/cart.css">
+</head>
+<body>
+	<!-- 头部 -->
+	<header>
+		<a href="index.html" class="logo"><img src="images/logo.png" alt="首页"></a>
+		<ul class="menu" id="menu">
+			<li><a href="index.html">首页</a><div></div></li>
+			<li><a href="good-list.html">商品列表</a><div></div></li>
+			<li><a href="goods-detail.html">商品详情</a><div></div></li>
+			<li><a href="my-heart.html">收藏</a><div></div></li>
+			<li><a href="cart.html">购物车</a><div></div></li>
+			<li><a href="user_info.html">个人中心</a><div></div></li>
+			<li><a href="login.html" target="_black">登录&注册</a><div></div></li>
+		</ul>
+		<ul class="topRight">
+			<li class="search"></li>
+			<li><a href="cart.html"></a></li>
+			<input type="text" placeholder="请输入商品名称" autofocus>
+		</ul>
+	</header>
+	<!-- 头部结束 -->
+	
+	<!-- main -->
+	<div class="container" id="container">
+		<div class="banner">
+			<div>购物车</div>
+			<img src="images/sub-header/015.jpg" alt="">
+		</div>
+		<div class="wrapBanner"></div>
+		
+		<div class="total_count">全部商品<em>2</em>件</div>	
+		<ul class="cart_list_th clearfix">
+			<li class="col01">商品名称</li>
+			<li class="col02">商品单位</li>
+			<li class="col03">商品价格</li>
+			<li class="col04">数量</li>
+			<li class="col05">小计</li>
+			<li class="col06">操作</li>
+		</ul>
+		<ul class="cart_list_td clearfix">
+			<li class="col01"><input type="checkbox" name="" checked></li>
+			<li class="col02"><img src="images/product/03.jpg"></li>
+			<li class="col03">豆角<br><em>25.80元/500g</em></li>
+			<li class="col04">500g</li>
+			<li class="col05">25.80元</li>
+			<li class="col06">
+				<div class="num_add">
+					<a href="javascript:;" class="add fl">+</a>
+					<input type="text" class="num_show fl" value="1">	
+					<a href="javascript:;" class="minus fl">-</a>	
+				</div>
+			</li>
+			<li class="col07">25.80元</li>
+			<li class="col08"><a href="javascript:;"><span class="remove" id="remove"></span></a></li>
+		</ul>
+
+		<ul class="cart_list_td clearfix">
+			<li class="col01"><input type="checkbox" name="" checked></li>
+			<li class="col02"><img src="images/product/02.jpg"></li>
+			<li class="col03">洋葱<br><em>16.80元/500g</em></li>
+			<li class="col04">500g</li>
+			<li class="col05">16.80元</li>
+			<li class="col06">
+				<div class="num_add">
+					<a href="javascript:;" class="add fl">+</a>
+					<input type="text" class="num_show fl" value="1">	
+					<a href="javascript:;" class="minus fl">-</a>	
+				</div>
+			</li>
+			<li class="col07">16.80元</li>
+			<li class="col08"><a href="javascript:;"><span class="remove" id="remove"></span></a></li>
+		</ul>
+	
+
+		<ul class="settlements">
+			<!-- 
+			<li class="col03">合计(不含运费)：<span>¥</span><em>42.60</em><br>共计<b>2</b>件商品</li>
+			<li class="col04"><a href="place_order.html">去结算</a></li>
+	 -->		
+				<li class="col01"><input type="checkbox" name="" checked=""></li>
+				<li class="col02">全选</li>
+	 			<div class="preferential">
+					<input type="text" name="code" placeholder="优惠码">
+					<button class="apply">申请购物券</button>
+					<button class="toCal" id="toCal"><a href="place-order.html">去结算</a></button>
+					<div class="cartInfo">
+						<p class="c1">合计(不含运费)：<span>¥42.60</span></p>
+						<p class="c2">共计<span>2</span>件商品</p>
+					</div>
+				</div>
+		</ul>
+
+			
+		</div>
+
+	<!-- main结束 -->
+	
+	<!-- 底部 -->
+	<footer class="footer">
+		<div class="foot_link">
+			<a href="#">关于我们</a>
+			<span>|</span>
+			<a href="#">联系我们</a>
+			<span>|</span>
+			<a href="#">网站合作</a>
+			<span>|</span>
+			<a href="#">友情链接</a>		
+		</div>
+		<p>Copyright 2018 , All Rights Reserved 看见我的小猫咪了吗 版权所有</p>
+		<p>地址：四川省宜宾市. 违法和不良信息举报电话：12377 举报邮箱：jubao@12377.cn</p>
+	</footer>
+	<!-- 底部结束 -->
+<script src="js/MyFunc.js"></script>
+<script src="js/cart.js"></script>
+</body>
+</html>

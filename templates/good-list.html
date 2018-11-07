@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}愉购-商品列表{% endblock title %}
+{% block topfiles %}
+	<link rel="stylesheet" href="{% static 'css/goodlist.css' %}">
+{% endblock topfiles %}
+{% block cheme %}{% endblock cheme %}
+	
+	<!-- main -->
+	{% block body %}
+	<div class="container" id="container">
+		<div class="banner">
+			<div>商店</div>
+			<img src="{% static 'images/sub-header/01.jpg' %}" alt="">
+		</div>
+
+		<div class="wrapBanner"></div>
+		<div class="titleWraper">
+			<div class="options">
+				<h2>显示所有结果中的 1 - 12 项</h2>
+				<div class="sort">
+					<a href="{% url 'goods:list' type.id 1 %}" {% if sort == 'default' %}class="cur"{% endif %}>默认排序</a>
+					<a href="{% url 'goods:list' type.id 1 %}?sort=price" {% if sort == 'price' %}class="cur"{% endif %}>价格排序</a>
+					<a href="{% url 'goods:list' type.id 1 %}?sort=hot" {% if sort == 'hot' %}class="cur"{% endif %}>人气排序</a>
+				</div>
+			</div>	
+		</div>
+		
+
+		<div class="goodlist">
+			{% for sku in skus %}
+			<div class="goods">
+				<img src="/static/{{ sku.image.url }}" alt="">
+				<p>{{ sku.name }}</p>
+
+				<div class="tools">
+					<ul>
+						<li><a href="#"></a></li>
+						<li><a href="{% url 'goods:detail' sku.id %}"></a></li>
+						<li><a href="#"></a></li>
+					</ul>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+
+		<div class="pagenation">
+                {% if skus_page.has_previous %}
+				<a href="{% url 'goods:list' type.id skus_page.previous_page_number %}?sort={{ sort }}"><</a>
+                {% endif %}
+                {% for pindex in pages %}
+                    {% if pindex == skus_page.number %}
+				        <a href="{% url 'goods:list' type.id pindex %}?sort={{ sort }}" class="cur">{{ pindex }}</a>
+                    {% else %}
+				        <a href="{% url 'goods:list' type.id pindex %}?sort={{ sort }}">{{ pindex }}</a>
+                    {% endif %}
+				{% endfor %}
+                {% if skus_page.has_next %}
+				<a href="{% url 'goods:list' type.id skus_page.next_page_number %}?sort={{ sort }}">></a>
+                {% endif %}
+			</div>
+	</div>
+	{% endblock body %}
+
+	<!-- main结束 -->
+{% block bottomfiles %}
+<script src="{% static 'js/goodlist.js' %}"></script>
+{% endblock bottomfiles %}
+</body>
+</html>
