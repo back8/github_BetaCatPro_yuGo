@@ -1,7 +1,7 @@
 var menu = document.getElementById('menu');
 var tabList = menu.children;
 var topRight = document.getElementsByClassName('topRight')[0];
-var searchInput = topRight.getElementsByTagName('input')[0];
+var searchInput = topRight.getElementsByTagName('input')[1];
 var search = document.getElementsByClassName('search')[0];
 var container = document.getElementById('container');
 
@@ -50,12 +50,12 @@ function serachAnimate(){
 	}
 }
 
-document.onclick = function(){
-	buffer(searchInput,{'width':'0px'},function(){
-			searchInput.style.display = 'none';
-			buffer(topRight,{'margin-right':'80px'});
-		});
-}
+// document.onclick = function(){
+// 	buffer(searchInput,{'width':'0px'},function(){
+// 			searchInput.style.display = 'none';
+// 			buffer(topRight,{'margin-right':'80px'});
+// 		});
+// }
 
 //页面重构,不想用媒寻了,太麻烦了,就用这种简单粗暴的方法
 function rebuild() {

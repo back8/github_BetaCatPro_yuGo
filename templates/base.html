@@ -32,9 +32,11 @@
 			{% endif %}
 		</ul>
 		<ul class="topRight">
-			<li class="search"></li>
-			<li><a href="{% url 'cart:show' %}"></a></li>
-			<input type="text" placeholder="请输入商品名称" autofocus>
+			<form action="/search" method="get">
+				<li class="search"><input type="button"></li>
+				<li><a href="{% url 'cart:show' %}"></a></li>
+				<input type="text" name="q" placeholder="请输入商品名称" autofocus>
+			</form>
 		</ul>
 	</header>
 	<!-- 头部结束 -->

@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tinymce', # 富文本编辑器
-    #'haystack',#全文搜索框架
+    'haystack',#全文搜索框架
     'user', # 用户模块
     'goods', # 商品模块
     'cart', # 购物车模块
