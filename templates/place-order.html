@@ -2,14 +2,14 @@
 {% load staticfiles %}
 {% block title %}愉购-订单中心{% endblock title %}
 {% block topfiles %}
-	<link rel="stylesheet" href="{% static'css/placeOrder.css' %}">
+	<link rel="stylesheet" href="{% static 'css/placeOrder.css' %}">
 {% endblock topfiles %}
 	{% block body %}
 	<!-- main -->
 	<div class="container" id="container">
 		<div class="banner">
 			<div>订单中心</div>
-			<img src="{% static'images/sub-header/015.jpg' %}" alt="">
+			<img src="{% static 'images/sub-header/015.jpg' %}" alt="">
 		</div>
 		<div class="wrapBanner"></div>
 		
@@ -79,6 +79,7 @@
 	</div>	
 {% endblock body %}
 
+{% block bottom %}
 	<div class="popup_con">
 		<div class="popup">
 			<p>订单提交成功！</p>
@@ -86,10 +87,47 @@
 		
 		<div class="mask"></div>
 	</div>
+{% endblock bottom %}
 
 
 	<!-- main结束 -->
 
-{% block bottomfiles %}	
-<script src="{% static'js/cart.js' %}"></script>
+{% block bottomfiles %}
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/cart.js' %}"></script>
+<script type="text/javascript">
+	$('#order_btn').click(function() {
+		// 获取用户选择的地址id, 支付方式, 要购买的商品id字符串
+		addr_id = $('input[name="addr_id"]:checked').val()
+		pay_method = $('input[name="pay_style"]:checked').val()
+		sku_ids = $(this).attr('sku_ids')
+		csrf = $('input[name="csrfmiddlewaretoken"]').val()
+		// alert(addr_id+":"+pay_method+':'+sku_ids)
+		// 组织参数
+		params = {
+			'addr_id': addr_id,
+			'pay_method': pay_method,
+			'sku_ids': sku_ids,
+			'csrfmiddlewaretoken': csrf
+		}
+		// 发起ajax post请求，访问/order/commit, 传递的参数: addr_id pay_method, sku_ids
+		$.post('/order/commit', params, function(data) {
+			if (data.res == 5) {
+				// 创建成功
+				localStorage.setItem('order_finish', 2);
+				$('.popup_con').fadeIn('fast', function() {
+
+					setTimeout(function() {
+						$('.popup_con').fadeOut('fast', function() {
+							window.location.href = '/user/order/1';
+						});
+					}, 3000)
+
+				});
+			} else {
+				alert(data.errmsg)
+			}
+		})
+	});
+</script>
 {% endblock bottomfiles %}

@@ -20,7 +20,7 @@ import os
 # /order/place
 class OrderPlaceView(LoginRequiredMixin, View):
     '''提交订单页面显示'''
-    def get(self, request):
+    def post(self, request):
         '''提交订单页面显示'''
         # 获取登录的用户
         user = request.user
@@ -76,13 +76,15 @@ class OrderPlaceView(LoginRequiredMixin, View):
                    'addrs':addrs,
                    'sku_ids':sku_ids}
 
-        return render(request, 'place_order.html', context)
+        return render(request, 'place-order.html', context)
 
 
 # 前端传递的参数:地址id(addr_id) 支付方式(pay_method) 用户要购买的商品id字符串(sku_ids)
 # mysql事务: 一组sql操作，要么都成功，要么都失败
 # 高并发:秒杀
 # 支付宝支付
+# 
+# 悲观锁
 class OrderCommitView1(View):
     '''订单创建'''
     @transaction.atomic
@@ -199,7 +201,7 @@ class OrderCommitView1(View):
         # 返回应答
         return JsonResponse({'res':5, 'message':'创建成功'})
 
-
+#乐观锁
 class OrderCommitView(View):
     '''订单创建'''
     @transaction.atomic
@@ -293,6 +295,8 @@ class OrderCommitView(View):
 
                     # 返回受影响的行数
                     res = GoodsSKU.objects.filter(id=sku_id, stock=orgin_stock).update(stock=new_stock, sales=new_sales)
+                    print('---------------------------------')
+                    print(res)
                     if res == 0:
                         if i == 2:
                             # 尝试的第3次
@@ -362,7 +366,7 @@ class OrderPayView(View):
         # 业务处理:使用python sdk调用支付宝的支付接口
         # 初始化
         alipay = AliPay(
-            appid="2016090800464054", # 应用id
+            appid="2016092000555410", # 应用id
             app_notify_url=None,  # 默认回调url
             app_private_key_path=os.path.join(settings.BASE_DIR, 'apps/order/app_private_key.pem'),
             alipay_public_key_path=os.path.join(settings.BASE_DIR, 'apps/order/alipay_public_key.pem'), # 支付宝的公钥，验证支付宝回传消息使用，不是你自己的公钥,
@@ -376,7 +380,7 @@ class OrderPayView(View):
         order_string = alipay.api_alipay_trade_page_pay(
             out_trade_no=order_id, # 订单id
             total_amount=str(total_pay), # 支付总金额
-            subject='天天生鲜%s'%order_id,
+            subject='愉购%s'%order_id,
             return_url=None,
             notify_url=None  # 可选, 不填则使用默认notify url
         )
@@ -416,11 +420,10 @@ class CheckPayView(View):
         # 业务处理:使用python sdk调用支付宝的支付接口
         # 初始化
         alipay = AliPay(
-            appid="2016090800464054",  # 应用id
+            appid="2016092000555410", # 应用id
             app_notify_url=None,  # 默认回调url
             app_private_key_path=os.path.join(settings.BASE_DIR, 'apps/order/app_private_key.pem'),
-            alipay_public_key_path=os.path.join(settings.BASE_DIR, 'apps/order/alipay_public_key.pem'),
-            # 支付宝的公钥，验证支付宝回传消息使用，不是你自己的公钥,
+            alipay_public_key_path=os.path.join(settings.BASE_DIR, 'apps/order/alipay_public_key.pem'), # 支付宝的公钥，验证支付宝回传消息使用，不是你自己的公钥,
             sign_type="RSA2",  # RSA 或者 RSA2
             debug=True  # 默认False
         )
@@ -541,13 +544,3 @@ class CommentView(LoginRequiredMixin, View):
         order.save()
 
         return redirect(reverse("user:order", kwargs={"page": 1}))
-
-
-
-
-
-
-
-
-
-

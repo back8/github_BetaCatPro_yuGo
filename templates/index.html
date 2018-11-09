@@ -34,10 +34,11 @@
 				</div>
 
 				<div class="tools">
+					{% csrf_token %}
 					<ul>
-						<li><a href="#"></a></li>
+						<li><a href="#" sku_id="{{ good.id }}" class="heart"></a></li>
 						<li><a href="{% url 'goods:detail' good.id %}"></a></li>
-						<li><a href="#"></a></li>
+						<li><a href="#" sku_id="{{ good.id }}" class="addCart"></a></li>
 					</ul>
 				</div>
 			</div>
@@ -120,4 +121,48 @@
 {% block bottomfiles %}
 <script src="{% static 'js/jquery.min.js' %}"></script>
 <script src="{% static 'js/index.js' %}"></script>
+<script>
+	$('.addCart').click(function() {
+	// 获取商品id和商品数量
+	sku_id = $(this).attr('sku_id'); // attr prop
+	count = 1;
+	csrf = $('input[name="csrfmiddlewaretoken"]').val();
+	params = {
+		'sku_id': sku_id,
+		'count': count,
+		'csrfmiddlewaretoken': csrf
+	}
+	// 发起ajax post请求，访问/cart/add, 传递参数:sku_id count
+	$.post('/cart/add', params, function(data) {
+		if (data.res == 5) {
+			// 添加成功
+			//todo:添加购物动画特效
+		} else {
+			// 添加失败
+			alert(data.errmsg);
+		}
+	})
+})
+
+//添加收藏夹
+$('.heart').click(function() {
+	// 获取商品id和商品数量
+	sku_id = $(this).attr('sku_id');
+	csrf = $('input[name="csrfmiddlewaretoken"]').val()
+	params = {
+		'sku_id': sku_id,
+		'csrfmiddlewaretoken': csrf
+	}
+	// 发起ajax post请求，访问/cart/addheart, 传递参数:sku_id
+	$.post('/cart/addheart', params, function(data) {
+		if (data.res == 5) {
+			// 添加成功
+			//todo:添加动画特效
+		} else {
+			// 添加失败
+			alert(data.errmsg)
+		}
+	})
+})
+</script>
 {% endblock bottomfiles %}

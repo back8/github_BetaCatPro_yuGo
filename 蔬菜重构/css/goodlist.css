@@ -146,6 +146,68 @@ header .logo {
 	background-color: rgba(0, 0, 0, .6);
 }
 
+.thumbnail {
+	margin: 0 auto;
+	width: 1260px;
+	height: 405px;
+	border-bottom: 1px solid #ccc;
+	/* display: flex; */
+}
+
+.thumbnail div {
+	display: inline-block;
+	position: relative;
+	margin: 40px auto;
+	width: 400px;
+	height: 495px;
+	padding-left: 15px;
+	/* display: flex; */
+	/* flex-grow: 0; */
+}
+
+.thumbnail div .innerImg {
+	display: block;
+	width: 226px;
+	height: 226px;
+	margin: 0 auto;
+	border-radius: 50%;
+	overflow: hidden;
+	cursor: pointer;
+	-webkit-transition: all .5s;
+	-o-transition: all .5s;
+	transition: all .5s;
+}
+
+.thumbnail div .innerImg:hover {
+	-webkit-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	-o-transform: scale(1.1);
+	transform: scale(1.1);
+}
+
+.thum1 {
+	background: url(../images/category-product/1.jpg);
+	background-size: 100% 100%;
+}
+
+.thum2 {
+	background: url(../images/category-product/2.jpg);
+	background-size: 100% 100%;
+}
+
+.thum3 {
+	background: url(../images/category-product/3.jpg);
+	background-size: 100% 100%;
+}
+
+.thumbnail div  p {
+	position: absolute;
+	bottom: 180px;
+	left: 200px;
+	font-size: 17px;
+}
+
+
 .titleWraper {
 	width: 100%;
 	height: 100px;
@@ -159,11 +221,17 @@ header .logo {
 }
 
 .options h2 {
+	margin-right: 10px;
 	font-size: 14px;
 	line-height: 100px;
 	float: left;
 	letter-spacing: 2px;
 	display: inline-block;
+	cursor: pointer;
+}
+
+.options h2 .curCato {
+	color: #FFA623FF;
 }
 
 .options .sort {
@@ -200,7 +268,8 @@ header .logo {
 	position: relative;
 	width: 290px;
 	height: 420px;
-	margin-right: 19px;
+	margin-left: 12px;
+	margin-right: 6px;
 	margin-bottom: 60px;
 	overflow: hidden;
 	border: 1px solid #ccc;

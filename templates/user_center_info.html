@@ -29,9 +29,10 @@
 					<a href="{% url 'goods:detail' goods.id %}"><img src="/static/{{ goods.image.url }}"></a>
 					<h4><a href="{% url 'goods:detail' goods.id %}">{{ goods.name }}</a></h4>
 					<div class="operate">
+						{% csrf_token %}
 						<span class="prize">${{ goods.price }}</span>
 						<span class="unit">{{ goods.price }}/{{ goods.unite }}</span>
-						<a href="#" class="add_goods" title="加入购物车"></a>
+						<a href="#" class="add_goods" title="加入购物车" sku_id="{{ goods.id }}"></a>
 					</div>
 				</li>
 				{% empty %}
@@ -43,5 +44,29 @@
 {% endblock right_content %}
 
 {% block bottomfiles %}
+<script src="{% static 'js/jquery.min.js' %}"></script>
 <script src="{% static 'js/goodlist.js' %}"></script>
+<script>
+	$('.add_goods').click(function() {
+	// 获取商品id和商品数量
+	sku_id = $(this).attr('sku_id'); // attr prop
+	count = 1;//默认为1
+	csrf = $('input[name="csrfmiddlewaretoken"]').val()
+	params = {
+		'sku_id': sku_id,
+		'count': count,
+		'csrfmiddlewaretoken': csrf
+	}
+	// 发起ajax post请求，访问/cart/add, 传递参数:sku_id count
+	$.post('/cart/add', params, function(data) {
+		if (data.res == 5) {
+			// 添加成功
+			//todo:添加购物动画特效
+		} else {
+			// 添加失败
+			alert(data.errmsg)
+		}
+	})
+})
+</script>
 {% endblock bottomfiles %}

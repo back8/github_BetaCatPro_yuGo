@@ -13,11 +13,12 @@
 			<div>商店</div>
 			<img src="{% static 'images/sub-header/01.jpg' %}" alt="">
 		</div>
-
 		<div class="wrapBanner"></div>
+
+		{% if type.id > 0 %}
 		<div class="titleWraper">
 			<div class="options">
-				<h2>显示所有结果中的 1 - 12 项</h2>
+				<h2>当前分类><span class="curCato">{{ type.name }}</span></h2>
 				<div class="sort">
 					<a href="{% url 'goods:list' type.id 1 %}" {% if sort == 'default' %}class="cur"{% endif %}>默认排序</a>
 					<a href="{% url 'goods:list' type.id 1 %}?sort=price" {% if sort == 'price' %}class="cur"{% endif %}>价格排序</a>
@@ -25,19 +26,31 @@
 				</div>
 			</div>	
 		</div>
+		{% else %}
+		<div class="thumbnail" id="thumbnail">
+			{% for type in types %}
+			<div>
+				<a href="{% url 'goods:list' type.id 1 %}" class="innerImg {{ type.logo }}"></a>
+				<p>{{ type.name }}</p>
+			</div>
+			{% endfor %}
+		</div>
+		{% endif %}
 		
 
 		<div class="goodlist">
-			{% for sku in skus %}
+			{% csrf_token %}
+			{% for sku in skus_page %}
 			<div class="goods">
 				<img src="/static/{{ sku.image.url }}" alt="">
 				<p>{{ sku.name }}</p>
 
 				<div class="tools">
+
 					<ul>
-						<li><a href="#"></a></li>
+						<li><a href="#" sku_id="{{ sku.id }}" class="heart"></a></li>
 						<li><a href="{% url 'goods:detail' sku.id %}"></a></li>
-						<li><a href="#"></a></li>
+						<li><a href="#" sku_id="{{ sku.id }}" class="addCart"></a></li>
 					</ul>
 				</div>
 			</div>
@@ -64,7 +77,52 @@
 
 	<!-- main结束 -->
 {% block bottomfiles %}
+<script src="{% static 'js/jquery.min.js' %}"></script>
 <script src="{% static 'js/goodlist.js' %}"></script>
+<script>
+	$('.addCart').click(function() {
+	// 获取商品id和商品数量
+	sku_id = $(this).attr('sku_id'); // attr prop
+	count = 1;
+	csrf = $('input[name="csrfmiddlewaretoken"]').val();
+	params = {
+		'sku_id': sku_id,
+		'count': count,
+		'csrfmiddlewaretoken': csrf
+	}
+	// 发起ajax post请求，访问/cart/add, 传递参数:sku_id count
+	$.post('/cart/add', params, function(data) {
+		if (data.res == 5) {
+			// 添加成功
+			//todo:添加购物动画特效
+		} else {
+			// 添加失败
+			alert(data.errmsg);
+		}
+	})
+})
+
+//添加收藏夹
+$('.heart').click(function() {
+	// 获取商品id和商品数量
+	sku_id = $(this).attr('sku_id');
+	csrf = $('input[name="csrfmiddlewaretoken"]').val()
+	params = {
+		'sku_id': sku_id,
+		'csrfmiddlewaretoken': csrf
+	}
+	// 发起ajax post请求，访问/cart/addheart, 传递参数:sku_id
+	$.post('/cart/addheart', params, function(data) {
+		if (data.res == 5) {
+			// 添加成功
+			//todo:添加动画特效
+		} else {
+			// 添加失败
+			alert(data.errmsg)
+		}
+	})
+})
+</script>
 {% endblock bottomfiles %}
 </body>
 </html>

@@ -9,6 +9,9 @@
 	<div class="right_content clearfix">
 		{% csrf_token %}
 		<h3 class="common_title2">全部订单</h3>
+        {% if not order_page %}
+            <p>暂无订单</p>
+        {% endif %}
 		{% for order in order_page %}
 		<ul class="order_list_th w978 clearfix">
 			<li class="col01">{{ order.create_time }}</li>
@@ -22,7 +25,7 @@
 					<td width="55%">
 					{% for order_sku in order.order_skus %}
 						<ul class="order_goods_list clearfix">					
-							<li class="col01"><img src="{{ order_sku.sku.image.url }}"></li>
+							<li class="col01"><img src="/static/{{ order_sku.sku.image.url }}"></li>
 							<li class="col02">{{ order_sku.sku.name }}<em>{{ order_sku.price }}元/{{ order_sku.sku.unite }}</em></li>
 							<li class="col03">{{ order_sku.count }}</li>
 							<li class="col04">{{ order_sku.amount }}元</li>
@@ -58,7 +61,7 @@
 
 {% block bottomfiles %}
 <script src="{% static 'js/goodlist.js' %}"></script>
-<script src="{% static 'js/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'js/jquery.min.js' %}"></script>
 <script>
     $('.oper_btn').each(function() {
     	// 获取支付状态

@@ -31,7 +31,7 @@
 				<div class="rightInfo">
 					<div class="price">
 						<h1>{{ sku.name }}</h1>
-						<h4>{{ sku.unite }}<span>{{ sku.price }}</span></h4>
+						<h4><span>{{ sku.price }}¥</span>/{{ sku.unite }}</h4>
 					</div>
 					<div class="introduce">
 						<p>{{ sku.desc }}</p>
@@ -44,7 +44,7 @@
 							<div class="operate_btn">
 								{% csrf_token %}
 								<button sku_id="{{ sku.id }}" class="addCart" id="addCart">添加到购物车</button>
-								<button class="heart" id="heart">
+								<button sku_id="{{ sku.id }}" class="heart" id="heart">
 									<span>❤</span>
 								</button>
 							</div>
@@ -204,6 +204,27 @@ $('#addCart').click(function() {
 		if (data.res == 5) {
 			// 添加成功
 			//todo:添加购物动画特效
+		} else {
+			// 添加失败
+			alert(data.errmsg)
+		}
+	})
+})
+
+//添加收藏夹
+$('#heart').click(function() {
+	// 获取商品id和商品数量
+	sku_id = $(this).attr('sku_id');
+	csrf = $('input[name="csrfmiddlewaretoken"]').val()
+	params = {
+		'sku_id': sku_id,
+		'csrfmiddlewaretoken': csrf
+	}
+	// 发起ajax post请求，访问/cart/addheart, 传递参数:sku_id
+	$.post('/cart/addheart', params, function(data) {
+		if (data.res == 5) {
+			// 添加成功
+			//todo:添加动画特效
 		} else {
 			// 添加失败
 			alert(data.errmsg)

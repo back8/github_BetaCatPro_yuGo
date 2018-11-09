@@ -20,8 +20,7 @@
 		<ul class="menu" id="menu">
 			<li><a href="{% url 'goods:index' %}">首页</a><div></div></li>
 			<li><a href="{% url 'goods:list' 999 1 %}">商品列表</a><div></div></li>
-			<!-- <li><a href="#">商品详情</a><div></div></li> -->
-			<li><a href="#">收藏</a><div></div></li>
+			<li><a href="{% url 'cart:heartshow' %}">收藏</a><div></div></li>
 			<li><a href="{% url 'cart:show' %}">购物车</a><div></div></li>
 			<li><a href="{% url 'user:user' %}">个人中心</a><div></div></li>
 			{% if user.is_authenticated %}
@@ -32,11 +31,9 @@
 			{% endif %}
 		</ul>
 		<ul class="topRight">
-			<form action="/search" method="get">
-				<li class="search"><input type="button" name="q"></li>
-				<li><a href="{% url 'cart:show' %}"></a></li>
-				<input type="text" placeholder="请输入商品名称" autofocus>
-			</form>
+			<li class="search"></li>
+			<li><a href="{% url 'cart:show' %}"></a></li>
+			<input type="text" placeholder="请输入商品名称" autofocus>
 		</ul>
 	</header>
 	<!-- 头部结束 -->

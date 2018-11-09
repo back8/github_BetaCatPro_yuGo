@@ -65,16 +65,14 @@ header .logo {
 	position: relative;
 	float: right;
 	margin-right: 80px;
-	margin-top: 18px;
-	/* margin-right: -60px; */
+	margin-top: 18px;	/* margin-right: -60px; */
 }
 
-.topRight input[type = "text"] {
+.topRight input[type ="text"] {
 	position: absolute;
 	width: 0px;
 	height: 20px;
-	left: -220px;
-	/* z-index: -1; */
+	left: -220px;	/* z-index: -1; */
 	display: none;
 }
 
@@ -86,25 +84,15 @@ header .logo {
 	cursor: pointer;
 }
 
-.topRight  .search {
-
+.topRight  li:nth-child(1) {
+	background: url(../images/icons/search.png);
+	background-size: 100% 100%;
 }
 
 .topRight  li:nth-child(2) {
 	background: url(../images/icons/cart.png);
 	background-size: 100% 100%;
 	margin-right: 0;
-}
-
-.topRight  .search input[type="button"] {
-	border: none;
-	/* background: #fff; */
-	outline: none;
-	width: 100%;
-	height: 100%;
-	background: url(../images/icons/search.png);
-	background-size: 100% 100%;
-	cursor: pointer;
 }
 
 .topRight a {
@@ -156,6 +144,66 @@ header .logo {
 	background-color: rgba(0, 0, 0, .6);
 }
 
+.thumbnail {
+	margin: 0 auto;
+	width: 1260px;
+	height: 405px;
+	border-bottom: 1px solid #ccc;	/* display: flex; */
+}
+
+.thumbnail div {
+	display: inline-block;
+	position: relative;
+	margin: 40px auto;
+	width: 400px;
+	height: 495px;
+	padding-left: 15px;	/* display: flex; */
+
+	/* flex-grow: 0; */
+}
+
+.thumbnail div .innerImg {
+	display: block;
+	width: 226px;
+	height: 226px;
+	margin: 0 auto;
+	border-radius: 50%;
+	overflow: hidden;
+	cursor: pointer;
+	-webkit-transition: all .5s;
+	-o-transition: all .5s;
+	transition: all .5s;
+}
+
+.thumbnail div .innerImg:hover {
+	-webkit-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	-o-transform: scale(1.1);
+	transform: scale(1.1);
+}
+
+.vegetables {
+	background: url(../images/category-product/1.jpg);
+	background-size: 100% 100%;
+}
+
+.fruit {
+	background: url(../images/category-product/2.jpg);
+	background-size: 100% 100%;
+}
+
+.meet {
+	background: url(../images/category-product/3.jpg);
+	background-size: 100% 100%;
+}
+
+.thumbnail div  p {
+	position: absolute;
+	bottom: 180px;
+	left: 200px;
+	font-size: 17px;
+}
+
 .titleWraper {
 	width: 100%;
 	height: 100px;
@@ -174,6 +222,10 @@ header .logo {
 	float: left;
 	letter-spacing: 2px;
 	display: inline-block;
+}
+
+.options h2 .curCato {
+	color: #FFA623FF;
 }
 
 .options .sort {
@@ -210,7 +262,8 @@ header .logo {
 	position: relative;
 	width: 290px;
 	height: 420px;
-	margin-right: 19px;
+	margin-left: 12px;
+	margin-right: 6px;
 	margin-bottom: 60px;
 	overflow: hidden;
 	border: 1px solid #ccc;

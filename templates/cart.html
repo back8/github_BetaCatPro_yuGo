@@ -23,40 +23,41 @@
 		<li class="col06">操作</li>
 	</ul>
     <form method="post" action="{% url 'order:place' %}">
-    {% for sku in skus %}
-	<ul class="cart_list_td clearfix">
-		<li class="col01"><input type="checkbox" name="sku_ids" value="{{ sku.id }}" checked></li>
-		<li class="col02"><img src="/static/{{ sku.image.url }}"></li>
-		<li class="col03">{{ sku.name }}<br><em>{{ sku.price }}{{ sku.unite }}</em></li>
-		<li class="col04">{{ sku.unite }}</li>
-		<li class="col05">{{ sku.price }}元</li>
-		<li class="col06">
-			<div class="num_add">
-				<a href="javascript:;" class="add fl">+</a>
-				<input type="text" sku_id="{{ sku.id }}" class="num_show fl" value="{{ sku.count }}">
-				<a href="javascript:;" class="minus fl">-</a>	
-			</div>
-		</li>
-		<li class="col07">{{ sku.amount }}元</li>
-		<li class="col08"><a href="javascript:;"><span class="remove"></span></a></li>
-	</ul>
-    {% endfor %}
-	
-
-		<ul class="settlements">
-	 			{% csrf_token %}
-				<li class="col01"><input type="checkbox" name="" checked=""></li>
-				<li class="col02">全选</li>
-	 			<div class="preferential">
-					<input type="text" name="code" placeholder="优惠码">
-					<button class="apply">申请购物券</button>
-					<button class="toCal" id="toCal"><a href="#">去结算</a></button>
-					<div class="cartInfo">
-						<p class="c1">合计(不含运费)：<span>¥</span><span class="totle_p">{{ total_price }}</span></p>
-						<p class="c2">共计<span>{{ total_count }}</span>件商品</p>
-					</div>
+	    {% for sku in skus %}
+		<ul class="cart_list_td clearfix">
+			<li class="col01"><input type="checkbox" name="sku_ids" value="{{ sku.id }}" checked></li>
+			<li class="col02"><img src="/static/{{ sku.image.url }}"></li>
+			<li class="col03">{{ sku.name }}<br><em>{{ sku.price }}¥/{{ sku.unite }}</em></li>
+			<li class="col04">{{ sku.unite }}</li>
+			<li class="col05">{{ sku.price }}元</li>
+			<li class="col06">
+				<div class="num_add">
+					<a href="javascript:;" class="add fl">+</a>
+					<input type="text" sku_id="{{ sku.id }}" class="num_show fl" value="{{ sku.count }}">
+					<a href="javascript:;" class="minus fl">-</a>	
 				</div>
+			</li>
+			<li class="col07">{{ sku.amount }}元</li>
+			<li class="col08"><a href="javascript:;"><span class="remove"></span></a></li>
 		</ul>
+	    {% endfor %}
+		
+
+			<ul class="settlements">
+		 			{% csrf_token %}
+					<li class="col01"><input type="checkbox" name="" checked=""></li>
+					<li class="col02">全选</li>
+		 			<div class="preferential">
+						<input type="text" name="code" placeholder="优惠码">
+						<button class="apply">申请购物券</button>
+						<input type="submit" class="toCal" value="去结算">
+						<div class="cartInfo">
+							<p class="c1">合计(不含运费)：<span>¥</span><span class="totle_p">{{ total_price }}</span></p>
+							<p class="c2">共计<span>{{ total_count }}</span>件商品</p>
+						</div>
+					</div>
+			</ul>
+	</form>
 
 			
 		</div>

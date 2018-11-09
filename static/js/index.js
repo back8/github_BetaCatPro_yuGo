@@ -3,7 +3,7 @@ var oLoading = document.getElementById('loading');
 var menu = document.getElementById('menu');
 var tabList = menu.children;
 var topRight = document.getElementsByClassName('topRight')[0];
-var searchInput = topRight.getElementsByTagName('input')[1];
+var searchInput = topRight.getElementsByTagName('input')[0];
 var search = document.getElementsByClassName('search')[0];
 
 var container = document.getElementById('container');
@@ -49,25 +49,33 @@ function changeTab() {
 }
 
 //搜索宽动画
-function serachAnimate(){
-	search.onclick = function(e){
+function serachAnimate() {
+	search.onclick = function(e) {
 		var ev = e || window.event;
-		buffer(topRight,{'margin-right':'-60px'},function(){
+		buffer(topRight, {
+			'margin-right': '-60px'
+		}, function() {
 			searchInput.style.display = 'block';
-			buffer(searchInput,{'width':'200px'});
+			buffer(searchInput, {
+				'width': '200px'
+			});
 		});
 
 		stopBubble(ev);
-		
+
 	}
 }
 
-// document.onclick = function(){
-// 	buffer(searchInput,{'width':'0px'},function(){
-// 			searchInput.style.display = 'none';
-// 			buffer(topRight,{'margin-right':'80px'});
-// 		});
-// }
+document.onclick = function() {
+	buffer(searchInput, {
+		'width': '0px'
+	}, function() {
+		searchInput.style.display = 'none';
+		buffer(topRight, {
+			'margin-right': '80px'
+		});
+	});
+}
 
 // 控制container的位置
 function bindContainer() {
@@ -158,20 +166,15 @@ function showLoading() {
 
 	for (var i = 0; i < arr.length; i++) {
 
-		// var objImg = new Image();
-		// objImg.src = '/static/images/call-to-action/' + arr[i];
-		// objImg.onload = function() {
-		// 	iNow++;
-		// 	oSpan.style.width = iNow / arr.length * 100 + '%';
-		// 	/*if(iNow == arr.length){
-		// 		alert(123);
-		// 	}*/
-		// };
-		setInterval(function(){
+		var objImg = new Image();
+		objImg.src = '/static/images/call-to-action/' + arr[i];
+		objImg.onload = function() {
 			iNow++;
 			oSpan.style.width = iNow / arr.length * 100 + '%';
-		}, 1000)
-
+			/*if(iNow == arr.length){
+				alert(123);
+			}*/
+		};
 
 	}
 	oSpan.addEventListener('webkitTransitionend', spanChange, false);

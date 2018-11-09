@@ -5,6 +5,7 @@ var searchInput = topRight.getElementsByTagName('input')[0];
 var search = document.getElementsByClassName('search')[0];
 var container = document.getElementById('container');
 
+
 changeTab();
 serachAnimate();
 rebuild();

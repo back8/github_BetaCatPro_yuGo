@@ -13,6 +13,7 @@
 				<dt>当前地址：</dt>
 		                {% if address %}
 				<dd><input type="radio" name="addr"><label>{{ address.addr }} （{{ address.receiver }} 收） {{ address.phone }}</label></dd>
+				
 			{% else %}
 				<dd>无默认地址</dd>
 		                {% endif %}

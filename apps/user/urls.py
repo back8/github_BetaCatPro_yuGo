@@ -15,6 +15,6 @@ urlpatterns = [
 	
 	#采用自定义mixin类
 	url(r'^$', UserInfoView.as_view(), name='user'),
-	url(r'^order$', UserOrderView.as_view(), name='order'),
+	url(r'^order/(?P<page>\d+)$', UserOrderView.as_view(), name='order'),
 	url(r'^address$', AddressView.as_view(), name='address'),
 ]

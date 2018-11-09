@@ -86,25 +86,15 @@ header .logo {
 	cursor: pointer;
 }
 
-.topRight  .search {
-
+.topRight  li:nth-child(1) {
+	background: url(../images/icons/search.png);
+	background-size: 100% 100%;
 }
 
 .topRight  li:nth-child(2) {
 	background: url(../images/icons/cart.png);
 	background-size: 100% 100%;
 	margin-right: 0;
-}
-
-.topRight  .search input[type="button"] {
-	border: none;
-	/* background: #fff; */
-	outline: none;
-	width: 100%;
-	height: 100%;
-	background: url(../images/icons/search.png);
-	background-size: 100% 100%;
-	cursor: pointer;
 }
 
 .topRight a {
@@ -189,7 +179,7 @@ header .logo {
 }
 
 .wrappper .goodslist {
-	width: 1100;
+	width: 1100px;
 	height: 190px;
 	overflow: hidden;
 	border-left: 1px solid #ccc;
@@ -211,6 +201,7 @@ header .logo {
 }
 
 .wrappper .goodslist li:nth-child(1) {
+	position: relative;
 	width: 366px;
 }
 
@@ -223,11 +214,20 @@ header .logo {
 	width: 540px;
 }
 
+.wrappper .goodslist li input[type="checkbox"] {
+	position: absolute;
+	width: 14px;
+	height: 14px;
+	top: 40%;
+	left: 6px;
+}
+
 .wrappper .goodslist li img {
 	display: inline-block;
 	width: 120px;
 	height: 120px;
 	margin-top: 30px;
+	margin-left: 18px;
 }
 
 .addToCart {
