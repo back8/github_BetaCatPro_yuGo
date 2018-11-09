@@ -256,7 +256,7 @@ class HeartAddView(View):
 
 # /cart/heartshow
 class HeartInfoView(LoginRequiredMixin, View):
-    '''购物车页面显示'''
+    '''收藏夹页面显示'''
     def get(self, request):
         '''显示'''
         # 获取登录的用户
@@ -284,9 +284,9 @@ class HeartInfoView(LoginRequiredMixin, View):
 # 前端需要传递的参数:商品的id(sku_id)
 # /cart/heartdelete
 class HeartDeleteView(View):
-    '''购物车记录删除'''
+    '''收藏夹记录删除'''
     def post(self, request):
-        '''购物车记录删除'''
+        '''收藏夹记录删除'''
         user = request.user
         if not user.is_authenticated():
             # 用户未登录
