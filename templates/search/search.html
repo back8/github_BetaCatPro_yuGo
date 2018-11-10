@@ -4,14 +4,23 @@
 {% block topfiles %}
     <link rel="stylesheet" href="{% static 'css/goodlist.css' %}">
 {% endblock topfiles %}
-{% block main_content %}
-	<div class="breadcrumb">
-		<a href="#">{{ query }}</a>
-		<span>></span>
-		<a href="#">搜索结果如下:</a>
-	</div>
-
+{% block body %}
 	<div class="container" id="container">
+        <div class="banner">
+            <div>商品列表</div>
+            <img src="{% static 'images/sub-header/01.jpg' %}" alt="">
+        </div>
+        <div class="wrapBanner"></div>
+
+        <div class="titleWraper">
+            <div class="options">
+                <h2>搜索结果如下><span class="curCato">{{ query }}</span></h2>
+            </div>  
+        </div>
+
+        {% if not page %}
+        <div>暂无当前搜索商品</div>
+        {% else %}
         <div class="goodlist">
             {% for item in page %}
                 <div class="goods">
@@ -43,5 +52,8 @@
 				<a href="/search?q={{ query }}&page={{ page.next_page_number }}">下一页></a>
                 {% endif %}
 			</div>
+            {% endif %}
 	</div>
-{% endblock main_content %}
+{% endblock body %}
+{% block bottomfiles %}
+{% endblock bottomfiles %}

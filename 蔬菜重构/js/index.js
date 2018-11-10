@@ -3,8 +3,8 @@ var oLoading = document.getElementById('loading');
 var menu = document.getElementById('menu');
 var tabList = menu.children;
 var topRight = document.getElementsByClassName('topRight')[0];
-var searchInput = topRight.getElementsByTagName('input')[1];
-var search = document.getElementsByClassName('search')[0];
+var searchInput = document.getElementsByClassName('searchInput')[0];
+var searchBtn = topRight.getElementsByTagName('li')[0];
 
 var container = document.getElementById('container');
 var thumbnail = document.getElementById('thumbnail');
@@ -50,15 +50,26 @@ function changeTab() {
 
 //搜索宽动画
 function serachAnimate(){
-	search.onclick = function(e){
+	var searchInnerBtn = document.createElement('input');
+	searchInnerBtn.type = 'submit';
+	searchInnerBtn.className = 'search';
+	searchInnerBtn.value = '';
+	searchBtn.onclick = function(e) {
 		var ev = e || window.event;
-		buffer(topRight,{'margin-right':'-60px'},function(){
+		buffer(topRight, {
+			'margin-right': '-60px'
+		}, function() {
 			searchInput.style.display = 'block';
-			buffer(searchInput,{'width':'200px'});
+			buffer(searchInput, {
+				'width': '200px'
+			}, function() {
+				//动态添加input搜索按钮
+				searchBtn.appendChild(searchInnerBtn);
+			});
 		});
 
 		stopBubble(ev);
-		
+
 	}
 }
 
@@ -153,7 +164,7 @@ function rebuild() {
 function showLoading() {
 	var oSpan = oLoading.getElementsByTagName('span')[0];
 	var aDiv = oLoading.getElementsByTagName('div');
-	var arr = ['1.jpg','1-1.jpg','1-2.jpg','1-3.jpg'];
+	var arr = ['1.jpg', '1-1.jpg', '1-2.jpg', '1-3.jpg'];
 	var iNow = 0;
 
 	for (var i = 0; i < arr.length; i++) {

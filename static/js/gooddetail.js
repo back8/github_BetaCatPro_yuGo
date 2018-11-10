@@ -1,8 +1,9 @@
 var menu = document.getElementById('menu');
 var tabList = menu.children;
 var topRight = document.getElementsByClassName('topRight')[0];
-var searchInput = topRight.getElementsByTagName('input')[1];
-var search = document.getElementsByClassName('search')[0];
+var searchInput = document.getElementsByClassName('searchInput')[0];
+var searchBtn = topRight.getElementsByTagName('li')[0];
+
 var container = document.getElementById('container');
 
 var othermsg = document.getElementById('othermsg');
@@ -43,8 +44,12 @@ function changeTab() {
 }
 
 //搜索宽动画
-function serachAnimate() {
-	search.onclick = function(e) {
+function serachAnimate(){
+	var searchInnerBtn = document.createElement('input');
+	searchInnerBtn.type = 'submit';
+	searchInnerBtn.className = 'search';
+	searchInnerBtn.value = '';
+	searchBtn.onclick = function(e) {
 		var ev = e || window.event;
 		buffer(topRight, {
 			'margin-right': '-60px'
@@ -52,6 +57,9 @@ function serachAnimate() {
 			searchInput.style.display = 'block';
 			buffer(searchInput, {
 				'width': '200px'
+			}, function() {
+				//动态添加input搜索按钮
+				searchBtn.appendChild(searchInnerBtn);
 			});
 		});
 
