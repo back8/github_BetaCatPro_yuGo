@@ -122,7 +122,7 @@ STATICFILES_DIRS = [
 
 # 富文本编辑器配置
 TINYMCE_DEFAULT_CONFIG = {
-    'theme': 'advance',
+    'theme': 'advanced',
     'width': 600,
     'height': 400,
 }

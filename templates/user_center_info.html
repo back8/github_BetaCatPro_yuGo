@@ -30,8 +30,8 @@
 					<h4><a href="{% url 'goods:detail' goods.id %}">{{ goods.name }}</a></h4>
 					<div class="operate">
 						{% csrf_token %}
-						<span class="prize">${{ goods.price }}</span>
-						<span class="unit">{{ goods.price }}/{{ goods.unite }}</span>
+						<span class="prize">¥{{ goods.price }}</span>
+						<span class="unit">{{ goods.price }}¥/{{ goods.unite }}</span>
 						<a href="#" class="add_goods" title="加入购物车" sku_id="{{ goods.id }}"></a>
 					</div>
 				</li>

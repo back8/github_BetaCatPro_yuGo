@@ -369,7 +369,7 @@ class OrderPayView(View):
             appid="2016092000555410", # 应用id
             app_notify_url=None,  # 默认回调url
             app_private_key_path=os.path.join(settings.BASE_DIR, 'apps/order/app_private_key.pem'),
-            alipay_public_key_path=os.path.join(settings.BASE_DIR, 'apps/order/alipay_public_key.pem'), # 支付宝的公钥，验证支付宝回传消息使用，不是你自己的公钥,
+            alipay_public_key_path=os.path.join(settings.BASE_DIR, 'apps/order/app_public_key.pem'), # 支付宝的公钥，验证支付宝回传消息使用，不是你自己的公钥,
             sign_type="RSA2",  # RSA 或者 RSA2
             debug=True  # 默认False
         )
@@ -423,7 +423,7 @@ class CheckPayView(View):
             appid="2016092000555410", # 应用id
             app_notify_url=None,  # 默认回调url
             app_private_key_path=os.path.join(settings.BASE_DIR, 'apps/order/app_private_key.pem'),
-            alipay_public_key_path=os.path.join(settings.BASE_DIR, 'apps/order/alipay_public_key.pem'), # 支付宝的公钥，验证支付宝回传消息使用，不是你自己的公钥,
+            alipay_public_key_path=os.path.join(settings.BASE_DIR, 'apps/order/app_public_key.pem'), # 支付宝的公钥，验证支付宝回传消息使用，不是你自己的公钥,
             sign_type="RSA2",  # RSA 或者 RSA2
             debug=True  # 默认False
         )
@@ -507,7 +507,6 @@ class CommentView(LoginRequiredMixin, View):
         # 动态给order增加属性order_skus, 保存订单商品信息
         order.order_skus = order_skus
 
-        # 使用模板
         return render(request, "order_comment.html", {"order": order})
 
     def post(self, request, order_id):

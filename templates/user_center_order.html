@@ -95,6 +95,9 @@
     				window.open(data.pay_url)
     				// 浏览器访问/order/check, 获取支付交易的结果
     				// ajax post 传递参数:order_id
+           
+                    //取消ajax异步 ,产生阻塞
+                    $.ajaxSettings.async = false
     				$.post('/order/check', params, function(data) {
     					if (data.res == 3) {
     						alert('支付成功')
@@ -104,6 +107,8 @@
     						alert(data.errmsg)
     					}
     				})
+                    //恢复异步
+                    $.ajaxSettings.async = true;
     			} else {
     				alert(data.errmsg)
     			}

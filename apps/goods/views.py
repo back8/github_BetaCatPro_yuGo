@@ -5,7 +5,7 @@ from django.core.cache import cache
 from django.core.paginator import Paginator
 from goods.models import GoodsSKU,GoodsType
 from django_redis import get_redis_connection
-from order.models import OrderGoods
+from order.models import OrderGoods,OrderInfo
 # Create your views here.
 
 # http://127.0.0.1:8000
@@ -32,13 +32,16 @@ class DetailView(View):
 
 		# 获取商品的分类信息
 		types = GoodsType.objects.all()
-		goods = GoodsSKU.objects.all()[:4]
 
-		# 获取商品的评论信息
-		#sku_orders = OrderGoods.objects.filter(sku=sku).exclude(comment='')
+		#相关产品
+		goods = GoodsSKU.objects.filter(type=sku.type)[:4]
+
+
+		#获取商品的评论信息
+		sku_orders = OrderGoods.objects.filter(sku=sku).exclude(comment='')
 
 		# 获取同一个SPU的其他规格商品
-		#same_spu_skus = GoodsSKU.objects.filter(goods=sku.goods).exclude(id=goods_id)
+		# same_spu_skus = GoodsSKU.objects.filter(goods=sku.goods).exclude(id=goods_id)
 
 		# 获取用户购物车中商品的数目
 		user = request.user
@@ -56,7 +59,8 @@ class DetailView(View):
 		# 组织模板上下文
 		context = {'sku':sku,
 			'types':types,
-			'goods':goods
+			'goods':goods,
+			'comment':sku_orders,
 			}
 
 		return render(request, 'goods-detail.html', context)
