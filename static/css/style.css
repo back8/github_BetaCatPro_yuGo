@@ -81,9 +81,14 @@ header .logo {
 	cursor: pointer;
 }
 
-.topRight  li:nth-child(1) {
+.topRight .search {
+	width: 100%;
+	height: 100%;
 	background: url(../images/icons/search.png);
 	background-size: 100% 100%;
+	border: none;
+	outline: none;
+	cursor: pointer;
 }
 
 .topRight  li:nth-child(2) {
