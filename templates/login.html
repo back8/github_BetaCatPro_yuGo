@@ -36,7 +36,6 @@
 								<input type="submit" name="" value="登录" class="input_submit">
 							</form>
 						</div>
-						{{ errmsg }}
 					</div>
 				</div>
 			</div>
@@ -45,5 +44,7 @@
 
 	<!-- main结束 -->
 {% block bottomfiles %}
+	<script src="{% static 'js/jquery.min.js' %}"></script>
 	<script src="{% static 'js/myHeart.js' %}"></script>
+	<script src="{% static 'js/register.js' %}"></script>
 {% endblock bottomfiles %}

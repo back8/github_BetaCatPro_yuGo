@@ -287,7 +287,7 @@ header .logo {
 }
 
 .reg_form li .error_tip {
-	float: left;
+	/* float: left; */
 	height: 30px;
 	line-height: 30px;
 	margin-left: 70px;
