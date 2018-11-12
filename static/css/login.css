@@ -248,12 +248,12 @@ header .logo {
 	color: #f00;
 	position: absolute;
 	left: 0;
-	top: 43px;
-	display: none
+	top: 63px;
+	/* display: none */
 }
 
 .pwd_error {
-	top: 110px;
+	top: 160px;
 }
 
 .more_input {

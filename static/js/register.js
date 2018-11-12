@@ -23,14 +23,6 @@ $(function() {
 		check_email();
 	});
 
-	$('.name_input').blur(function() {
-		check_login_name();
-	});
-
-	$('.pass_input').blur(function() {
-		check_login_password();
-	});
-
 	$('#allow').click(function() {
 		if ($(this).is(':checked')) {
 			error_check = false;
@@ -97,48 +89,6 @@ $(function() {
 
 	}
 
-	function check_login_name() {
-		var name = $('.name_input').val();
-		var name_error = $('.user_error').val();
-		alert(name_error)
-		var csrf = $('input[name="csrfmiddlewaretoken"]').val();
-
-		params = {
-			'csrfmiddlewaretoken': csrf,
-			'name': name
-		}
-		$.post('/user/login', params, function(data) {
-			/*optional stuff to do after success */
-			if (data.errmsg) {
-				name_error.html(errmsg);
-				name_error.css('display', 'block')
-			} else {
-				name_error.style.display = 'none';
-			}
-		});
-
-	}
-
-	function check_login_password() {
-		var pass = $('.pass_input').val();
-		var pass_error = $('.pwd_error').val();
-		var csrf = $('input[name="csrfmiddlewaretoken"]').val();
-
-		params = {
-			'csrfmiddlewaretoken': csrf,
-			'pass': pass
-		}
-		$.post('/user/login', params, function(data) {
-			/*optional stuff to do after success */
-			if (data.errmsg) {
-				pass_error.html(errmsg);
-				pass_error.style.display = 'block';
-			} else {
-				pass_error.style.display = 'none';
-			}
-		});
-
-	}
 
 	$('#reg_form').submit(function() {
 		check_user_name();
@@ -153,7 +103,5 @@ $(function() {
 		}
 
 	});
-
-
 
 })
