@@ -13,6 +13,7 @@ class IndexView(View):
 	'''首页'''
 	def get(self, request):
 		types = GoodsType.objects.all()
+		# goods = GoodsSKU.objects.all().order_by('-sales')[:5]
 		goods = GoodsSKU.objects.all()[:5]
 		contex = {'types':types,
 						'goods':goods
