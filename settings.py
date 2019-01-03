@@ -24,7 +24,8 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 SECRET_KEY = 'jk=!)aq1i@#@ktpf1k7cx(2ms=ol+tw+ckgyu!#cono7&m$mqg'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -86,7 +87,6 @@ DATABASES = {
         'NAME': 'yugo',
         'USER': 'root',
         'PASSWORD': '123456',
-        # 'HOST': '123.206.181.145',
         'HOST': '127.0.0.1',
         'PORT':3306,
     }
