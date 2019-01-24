@@ -1,7 +1,7 @@
 # yuGo
 电商-Django项目(～￣▽￣)
 
-#生鲜类产品 B2C PC电脑端网页
+#
 #>*功能模块：用户模块 商品模块（首页、 搜索、商品） 购物车模块 订单模块（下单、 支付）
 #>*用户模块：注册、登录、激活、退出、个人中心、地址
 #>*商品模块：首页、详情、列表、搜索（haystack+whoosh）
@@ -17,3 +17,26 @@
 #>*事务
 #>*高并发的库存问题 （悲观锁、乐观锁）
 #>*支付的使用流程
+
+
+# onlineshop
+
+> vue商城
+
+## 生鲜类产品 B2C PC电脑端网页
+
+``` bash
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:8080
+npm run dev
+
+# build for production with minification
+npm run build
+
+# build for production and view the bundle analyzer report
+npm run build --report
+```
+
+For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
